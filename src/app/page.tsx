@@ -848,6 +848,7 @@ export default function Home() {
           : "Hey! Looks like we matched. I’m glad we found each other here 😊",
       }],
     });
+    advance();
     setScreen("matched");
   }
 
@@ -904,7 +905,7 @@ export default function Home() {
         />
       )}
       {screen === "detail" && profile && <Detail profile={profile} onBack={() => setScreen("discover")} onLike={likeCurrent} onSuperLike={superLikeCurrent} />}
-      {screen === "matched" && <MatchMoment profile={lastMatchedProfile} onMessage={() => openChat(lastMatchedId)} onBrowse={() => { advance(); setScreen("discover"); }} />}
+      {screen === "matched" && <MatchMoment profile={lastMatchedProfile} onMessage={() => openChat(lastMatchedId)} onBrowse={() => setScreen("discover")} />}
       {screen === "matches" && <Matches matchedIds={matchedIds} onChat={openChat} />}
       {screen === "chat" && (
         <>
