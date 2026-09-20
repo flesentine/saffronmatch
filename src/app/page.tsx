@@ -266,6 +266,7 @@ function Welcome({ onStart }: { onStart: () => void }) {
       <div className="welcome-copy">
         <span className="script-note">Different cultures.<br />Brighter stories.</span><span className="script-note-fa" lang="fa" dir="rtl">فرهنگ‌های متفاوت، داستان‌های روشن‌تر</span>
         <h1>Meet someone who gets <em>both</em> sides of your story.</h1>
+        <button className="primary welcome-primary" onClick={onStart}>Get Started <small lang="fa" dir="rtl">شروع کن</small><span>→</span></button>
         <p>A dating experience designed around meaningful cross-cultural connection.</p><p className="welcome-fa" lang="fa" dir="rtl">برای آشنایی‌های واقعی، محترمانه و معنادار میان فرهنگ‌ها</p>
       </div>
       <div className="feature-row">
@@ -273,7 +274,6 @@ function Welcome({ onStart }: { onStart: () => void }) {
         <div><b>◎</b><span>Shared values</span><small lang="fa" dir="rtl">ارزش‌های مشترک</small></div>
         <div><b>✦</b><span>Safer dating</span><small lang="fa" dir="rtl">فضایی امن‌تر</small></div>
       </div>
-      <button className="primary" onClick={onStart}>Get Started <small lang="fa" dir="rtl">شروع کن</small><span>→</span></button>
       <button className="secondary" onClick={onStart}>Preview the demo <small lang="fa" dir="rtl">دیدن نسخه نمایشی</small></button>
       <div className="motto">LOVE HAS A WIDER HORIZON<div lang="fa" dir="rtl">عشق افق گسترده‌تری دارد</div></div>
     </div>
