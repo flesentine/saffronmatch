@@ -32,7 +32,7 @@ type Profile = {
 
 type FilterState = {
   region: "Anywhere" | "SoCal" | "California";
-  age: "All ages" | "30–33" | "34–37";
+  age: "All ages" | "18–29" | "30–44" | "45–59" | "60–80";
   interest: "Any interest" | "Family" | "Travel" | "Coffee" | "Fitness";
 };
 
@@ -212,7 +212,7 @@ function Brand({ compact = false }: { compact?: boolean }) {
       <div className="brand-flower" aria-hidden="true"><span /><span /><span /></div>
       <div>
         <div className="brand-name"><em>Saffron</em> <strong>Match</strong></div>
-        {!compact && <div className="brand-tag">Meaningful connections across cultures</div>}
+        {!compact && <><div className="brand-tag">Meaningful connections across cultures</div><div className="brand-tag-fa" lang="fa" dir="rtl">ارتباطی معنادار میان فرهنگ‌ها</div></>}
       </div>
     </div>
   );
@@ -264,18 +264,18 @@ function Welcome({ onStart }: { onStart: () => void }) {
         <div className="hero-heart">♥</div>
       </div>
       <div className="welcome-copy">
-        <span className="script-note">Different cultures.<br />Brighter stories.</span>
+        <span className="script-note">Different cultures.<br />Brighter stories.</span><span className="script-note-fa" lang="fa" dir="rtl">فرهنگ‌های متفاوت، داستان‌های روشن‌تر</span>
         <h1>Meet someone who gets <em>both</em> sides of your story.</h1>
-        <p>A dating experience designed around meaningful cross-cultural connection.</p>
+        <p>A dating experience designed around meaningful cross-cultural connection.</p><p className="welcome-fa" lang="fa" dir="rtl">برای آشنایی‌های واقعی، محترمانه و معنادار میان فرهنگ‌ها</p>
       </div>
       <div className="feature-row">
-        <div><b>♡</b><span>Real people</span></div>
-        <div><b>◎</b><span>Shared values</span></div>
-        <div><b>✦</b><span>Safer dating</span></div>
+        <div><b>♡</b><span>Real people</span><small lang="fa" dir="rtl">آدم‌های واقعی</small></div>
+        <div><b>◎</b><span>Shared values</span><small lang="fa" dir="rtl">ارزش‌های مشترک</small></div>
+        <div><b>✦</b><span>Safer dating</span><small lang="fa" dir="rtl">فضایی امن‌تر</small></div>
       </div>
-      <button className="primary" onClick={onStart}>Get Started <span>→</span></button>
-      <button className="secondary" onClick={onStart}>Preview the demo</button>
-      <div className="motto">LOVE HAS A WIDER HORIZON</div>
+      <button className="primary" onClick={onStart}>Get Started <small lang="fa" dir="rtl">شروع کن</small><span>→</span></button>
+      <button className="secondary" onClick={onStart}>Preview the demo <small lang="fa" dir="rtl">دیدن نسخه نمایشی</small></button>
+      <div className="motto">LOVE HAS A WIDER HORIZON<div lang="fa" dir="rtl">عشق افق گسترده‌تری دارد</div></div>
     </div>
   );
 }
@@ -313,7 +313,7 @@ function Onboarding({
         <div><label>First name<input value={name} onChange={(e) => setName(e.target.value)} placeholder="First name" aria-label="First name" /></label></div>
       </div>
       <div className="form-grid">
-        <label>Age range<select defaultValue="30-39"><option>25-34</option><option>30-39</option><option>35-45</option></select></label>
+        <label>Age range<select defaultValue="30-44"><option>18-29</option><option>30-44</option><option>45-59</option><option>60-69</option><option>70-80</option></select></label>
         <label>Location<select value={location} onChange={(e) => setLocation(e.target.value)}><option>Orange County</option><option>Los Angeles</option><option>San Diego</option></select></label>
       </div>
       <ChoiceGroup title="Relationship goals" options={["Serious dating", "Open to marriage", "Meaningful connection", "Just exploring"]} selected={goals} onToggle={(v) => toggle(v, setGoals)} />
@@ -358,7 +358,7 @@ function FilterSheet({
 }) {
   const groups: { key: keyof FilterState; title: string; values: string[] }[] = [
     { key: "region", title: "Location", values: ["Anywhere", "SoCal", "California"] },
-    { key: "age", title: "Age", values: ["All ages", "30–33", "34–37"] },
+    { key: "age", title: "Age", values: ["All ages", "18–29", "30–44", "45–59", "60–80"] },
     { key: "interest", title: "Interest", values: ["Any interest", "Family", "Travel", "Coffee", "Fitness"] },
   ];
   return (
@@ -708,7 +708,7 @@ function Settings({
       <button className="promo-row" onClick={() => setNotifications(!notifications)}><span>♧</span><div><b>Notifications</b><p>{notifications ? "On · tap to mute" : "Muted · tap to turn on"}</p></div><i>{notifications ? "●" : "○"}</i></button>
       <button className="promo-row" onClick={onSafety}><span>✓</span><div><b>Privacy & Safety</b><p>Verification, visibility, reporting</p></div><i>›</i></button>
       <button className="promo-row gold-row" onClick={onGold}><span>★</span><div><b>Saffron Gold</b><p>See premium demo features</p></div><i>›</i></button>
-      <div className="settings-row"><span>◎</span><div><b>Language</b><p>English · فارسی coming soon</p></div><i>›</i></div>
+      <div className="settings-row"><span>◎</span><div><b>Language</b><p>English · فارسی</p></div><i>✓</i></div>
       <div className="motto">LOVE HAS A WIDER HORIZON</div>
     </div>
   );
@@ -784,8 +784,10 @@ export default function Home() {
       (filters.region === "SoCal" && ["San Diego, CA", "Los Angeles, CA", "Newport Beach, CA", "Santa Monica, CA"].includes(p.city));
     const ageOk =
       filters.age === "All ages" ||
-      (filters.age === "30–33" && p.age >= 30 && p.age <= 33) ||
-      (filters.age === "34–37" && p.age >= 34 && p.age <= 37);
+      (filters.age === "18–29" && p.age >= 18 && p.age <= 29) ||
+      (filters.age === "30–44" && p.age >= 30 && p.age <= 44) ||
+      (filters.age === "45–59" && p.age >= 45 && p.age <= 59) ||
+      (filters.age === "60–80" && p.age >= 60 && p.age <= 80);
     const interestOk = filters.interest === "Any interest" || p.interests.includes(filters.interest);
     return regionOk && ageOk && interestOk;
   }), [filters]);
