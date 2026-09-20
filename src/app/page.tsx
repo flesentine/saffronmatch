@@ -178,8 +178,6 @@ const profiles: Profile[] = [
 
 const demoWomanPhoto =
   "https://images.unsplash.com/photo-1579105728744-9d6b14a45389?auto=format&fit=crop&w=900&q=88";
-const welcomeManPhoto =
-  "https://images.unsplash.com/photo-1551847812-f815b31ae67c?auto=format&fit=crop&w=900&q=88";
 
 const seedMessages: Record<string, Message[]> = {
   daniel: [
@@ -258,10 +256,12 @@ function Welcome({ onStart }: { onStart: () => void }) {
       <div className="ornament ornament-b" />
       <Brand />
       <p className="eyebrow">PEOPLE · CULTURE · A BRIGHTER US</p>
-      <div className="hero-pair">
-        <div className="portrait portrait-left"><Image src={demoWomanPhoto} alt="Smiling demo profile portrait" fill sizes="220px" priority /></div>
-        <div className="portrait portrait-right"><Image src={welcomeManPhoto} alt="Promotional portrait" fill sizes="220px" priority /></div>
-        <div className="hero-heart">♥</div>
+      <div className="welcome-hero-art">
+        <img
+          src="welcome-generated.jpg"
+          alt="Smiling Persian woman and promotional match in a golden Persian cityscape"
+        />
+        <div className="welcome-hero-badge"><span>♥</span><b>Across cultures</b><small lang="fa" dir="rtl">میان فرهنگ‌ها</small></div>
       </div>
       <div className="welcome-copy">
         <span className="script-note">Different cultures.<br />Brighter stories.</span><span className="script-note-fa" lang="fa" dir="rtl">فرهنگ‌های متفاوت، داستان‌های روشن‌تر</span>
