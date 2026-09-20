@@ -1,8 +1,6 @@
 name: Deploy demo to GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -25,8 +23,6 @@ jobs:
           node-version: 22
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Build static export
