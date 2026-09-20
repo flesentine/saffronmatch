@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ef">
+  <title>Saffron Match Demo</title>
+  <link rel="stylesheet" href="./demo.css">
+</head>
+<body>
+<main class="stage">
+  <section class="phone">
+    <div class="status"><b>9:41</b><span>●●● ︿ ▰</span></div>
+
+    <section class="screen active" id="welcome">
+      <div class="pad welcome">
+        <div class="brand"><div class="flower">✦</div><h1><em>Saffron</em> Match</h1><p>Meaningful connections across cultures</p></div>
+        <div class="eyebrow">PEOPLE · CULTURE · A BRIGHTER US</div>
+        <div class="pair">
+          <img class="her" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=88" alt="">
+          <img class="him" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=88" alt="">
+          <span>♥</span>
+        </div>
+        <div class="script">Different cultures. Brighter stories.</div>
+        <h2>Meet someone who gets <i>both</i> sides of your story.</h2>
+        <p class="muted">A dating experience designed around meaningful cross-cultural connection.</p>
+        <button class="primary" data-go="onboarding">Get Started →</button>
+        <button class="secondary" data-go="discover">Preview Demo</button>
+      </div>
+    </section>
+
+    <section class="screen" id="onboarding">
+      <div class="pad">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="progress"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="eyebrow">STEP 2 OF 5</div>
+        <h2>Create Your Profile</h2>
+        <p class="muted">Tell us what matters so matches feel more intentional.</p>
+        <div class="profile-row">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=88" alt="">
+          <label>First name<input value="Ati" aria-label="First name"></label>
+        </div>
+        <h3>Relationship goals</h3>
+        <div class="chips">
+          <button class="chip selected">Serious dating</button><button class="chip selected">Open to marriage</button><button class="chip">Meaningful connection</button><button class="chip">Just exploring</button>
+        </div>
+        <h3>Cultural values</h3>
+        <div class="chips">
+          <button class="chip selected">Family-minded</button><button class="chip">Keep my culture</button><button class="chip selected">Cross-cultural</button><button class="chip">Open-minded</button>
+        </div>
+        <h3>Interests</h3>
+        <div class="chips"><button class="chip selected">Travel</button><button class="chip selected">Food</button><button class="chip">Fitness</button><button class="chip">Art</button><button class="chip selected">Music</button></div>
+        <button class="primary bottom-action" data-go="discover">Continue to Matches →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="discover">
+      <div class="pad compact">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="filters"><button>📍 SoCal</button><button>Men</button><button>☷ Filters</button></div>
+        <article class="card">
+          <div class="photo">
+            <img id="discover-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=88" alt="">
+            <div class="shade"></div>
+            <div class="photo-copy"><small id="discover-score">94% MATCH</small><h2 id="discover-name">Daniel, 32 ✓</h2><p id="discover-meta">📍 San Diego, CA · Product Manager</p></div>
+          </div>
+          <div class="card-body">
+            <p id="discover-bio">Curious, kind, and family-oriented. I love good food, long conversations, travel, and building a life with someone who values both roots and adventure.</p>
+            <div class="chips tiny"><span class="chip">Travel</span><span class="chip">Coffee</span><span class="chip">Family</span></div>
+            <button class="link" data-go="profile">View full profile →</button>
+          </div>
+        </article>
+        <div class="actions"><button id="pass">×</button><button class="heart" id="like">♥</button><button data-go="profile">✦</button></div>
+      </div>
+      <nav class="nav"><button class="on" data-go="discover">⌁<span>Discover</span></button><button data-go="matches">♡<span>Matches</span></button><button data-go="chat">◌<span>Messages</span></button><button data-go="settings">○<span>Profile</span></button></nav>
+    </section>
+
+    <section class="screen" id="profile">
+      <div class="profile-hero">
+        <img id="profile-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=90" alt="">
+        <div class="shade"></div><button class="back" data-go="discover">‹</button>
+        <div class="hero-copy"><small>94% MATCH</small><h2>Daniel, 32 ✓</h2><p>📍 San Diego, CA · Product Manager</p></div>
+      </div>
+      <div class="pad short">
+        <div class="section"><h3>About</h3><p>Curious, kind, and family-oriented. I grew up in the U.S. and love good food, travel, and learning how other families celebrate life.</p></div>
+        <div class="section"><h3>Interests</h3><div class="chips"><span class="chip">Travel</span><span class="chip">Coffee</span><span class="chip">Hiking</span><span class="chip">Music</span></div></div>
+        <div class="why"><div class="eyebrow">WHY WE MATCH</div><h3>Family + curiosity + real intention</h3><p>You both value close family, travel, meaningful conversation, and building something long-term without losing your own culture.</p></div>
+        <button class="primary bottom-action" id="profile-like">♥ Send Like</button>
+      </div>
+    </section>
+
+    <section class="screen" id="match">
+      <div class="pad match">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="eyebrow">A NEW CONNECTION</div>
+        <h2>It’s a Match!</h2><p class="muted">Ati & Daniel liked each other.</p>
+        <div class="match-pair"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=88" alt=""><b>♥</b><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=88" alt=""></div>
+        <blockquote>“Good conversations can start across any distance.”</blockquote>
+        <button class="primary" data-go="chat">Send Daniel a Message →</button>
+        <button class="secondary" data-go="discover">Keep Browsing</button>
+      </div>
+    </section>
+
+    <section class="screen" id="matches">
+      <div class="pad compact">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="eyebrow">REAL PEOPLE · MEANINGFUL CONNECTIONS</div><h2>Your Matches</h2>
+        <div class="tabs"><button class="on">New 3</button><button>Messages 1</button></div>
+        <button class="match-row" data-go="chat"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=88" alt=""><div><b>Daniel, 32</b><small>San Diego · now</small><p>Coffee first. Persian tea when it gets serious ☕️</p></div><span>›</span></button>
+        <button class="match-row"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=88" alt=""><div><b>Michael, 34</b><small>New York · 2h</small><p>That restaurant looks amazing.</p></div><span>›</span></button>
+        <button class="match-row"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=88" alt=""><div><b>Alex, 31</b><small>Los Angeles · 1d</small><p>I’d love to hear more about Tehran.</p></div><span>›</span></button>
+      </div>
+      <nav class="nav"><button data-go="discover">⌁<span>Discover</span></button><button class="on" data-go="matches">♥<span>Matches</span></button><button data-go="chat">◌<span>Messages</span></button><button data-go="settings">○<span>Profile</span></button></nav>
+    </section>
+
+    <section class="screen" id="chat">
+      <header class="chat-head"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=88" alt=""><div><b>Daniel</b><small>● Online now · San Diego</small></div><button>•••</button></header>
+      <div class="chat-title"><span>MEANINGFUL CONNECTIONS</span><button data-go="date">Plan date ✦</button></div>
+      <div class="messages" id="messages">
+        <p class="bubble his">Hi Ati! I loved your profile — you seem warm, thoughtful, and really close to your family.</p>
+        <p class="bubble mine">Thank you! 😊 I liked yours too. You seem genuinely curious about different cultures.</p>
+        <p class="bubble his">Very much. Also important question: coffee or Persian tea?</p>
+        <p class="bubble mine">Both. Coffee first, Persian tea when the conversation gets serious. ☕️❤️</p>
+        <button class="date-nudge" data-go="date">☕️ <span><b>Ready to meet?</b><small>Plan an easy first coffee.</small></span> →</button>
+      </div>
+      <div class="composer"><input id="message-input" placeholder="Type a message..."><button id="send">➤</button></div>
+      <nav class="nav"><button data-go="discover">⌁<span>Discover</span></button><button data-go="matches">♡<span>Matches</span></button><button class="on" data-go="chat">●<span>Messages</span></button><button data-go="settings">○<span>Profile</span></button></nav>
+    </section>
+
+    <section class="screen" id="date">
+      <div class="pad">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="eyebrow">GOOD CONVERSATIONS · BRIGHTER BEGINNINGS</div><h2>Plan Your First Date</h2><p class="muted">Keep it easy. Coffee, conversation, no pressure.</p>
+        <div class="venue"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=700&q=85" alt=""><div><small>SUGGESTED VENUE</small><h3>A cozy coffee date</h3><p>Relaxed atmosphere, easy first conversation.</p><b>📍 Laguna Beach, CA</b></div></div>
+        <h3>Select day</h3><div class="choices"><button>Fri</button><button class="on">Sat</button><button>Sun</button><button>Mon</button></div>
+        <h3>Select time</h3><div class="choices"><button>9:00</button><button class="on">11:00</button><button>1:00</button><button>3:00</button></div>
+        <h3>How would you like to meet?</h3><div class="choices wide"><button class="on">In Person</button><button>Video Call</button></div>
+        <button class="primary bottom-action" id="invite">Send Invite →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="more">
+      <div class="pad">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="eyebrow">TRUST · POSSIBILITY · CONNECTION</div><h2>Safe & Verified</h2><p class="muted">Photo verification, identity review, privacy controls, and easy report/block tools.</p>
+        <div class="feature-card"><b>✓ Photo verified</b><p>Real photos, real people.</p></div>
+        <div class="feature-card"><b>▣ Identity review</b><p>Extra confidence before you meet.</p></div>
+        <div class="feature-card"><b>♢ Privacy controls</b><p>You decide what to share.</p></div>
+        <div class="gold-card"><div class="eyebrow">SAFFRON GOLD</div><h2>More possibilities.</h2><p>Unlimited likes · Advanced filters · Travel mode · See who liked you</p><button class="primary">Preview Premium</button></div>
+        <button class="secondary" data-go="settings">Back to Profile</button>
+      </div>
+    </section>
+
+    <section class="screen" id="settings">
+      <div class="pad compact">
+        <header class="mini-brand"><span>✦</span><b><em>Saffron</em> Match</b></header>
+        <div class="settings-profile"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=88" alt=""><div><h2>Ati</h2><p>Orange County, CA</p><button>Edit profile</button></div></div>
+        <div class="setting"><span>♡</span><div><b>My Preferences</b><p>Dating goals, lifestyle, culture</p></div><i>›</i></div>
+        <div class="setting"><span>☷</span><div><b>Match Preferences</b><p>Age, location, values</p></div><i>›</i></div>
+        <div class="setting"><span>♧</span><div><b>Notifications</b><p>Messages, matches, updates</p></div><i>›</i></div>
+        <button class="setting action" data-go="more"><span>✓</span><div><b>Safety & Saffron Gold</b><p>Verification and premium concepts</p></div><i>›</i></button>
+        <div class="setting"><span>◎</span><div><b>Language</b><p>English · فارسی coming soon</p></div><i>›</i></div>
+      </div>
+      <nav class="nav"><button data-go="discover">⌁<span>Discover</span></button><button data-go="matches">♡<span>Matches</span></button><button data-go="chat">◌<span>Messages</span></button><button class="on" data-go="settings">●<span>Profile</span></button></nav>
+    </section>
+
+    <div class="homebar"></div>
+    <div class="toast" id="toast">✓ Date invite sent to Daniel</div>
+  </section>
+  <p class="caption">Saffron Match · interactive concept demo</p>
+</main>
+<script src="./demo.js"></script>
+</body>
+</html>
