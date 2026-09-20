@@ -258,7 +258,7 @@ function Welcome({ onStart }: { onStart: () => void }) {
       <p className="eyebrow">PEOPLE · CULTURE · A BRIGHTER US</p>
       <div className="welcome-hero-art">
         <img
-          src="welcome-generated.jpg"
+          src={process.env.NODE_ENV === "production" ? "/saffronmatch/welcome-generated.webp" : "/welcome-generated.webp"}
           alt="Smiling Persian woman and promotional match in a golden Persian cityscape"
         />
         <div className="welcome-hero-badge"><span>♥</span><b>Across cultures</b><small lang="fa" dir="rtl">میان فرهنگ‌ها</small></div>
