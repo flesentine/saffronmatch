@@ -29,61 +29,21 @@ type Profile = {
 };
 
 const profiles: Profile[] = [
-  {
-    id: "daniel",
-    name: "Daniel",
-    age: 32,
-    city: "San Diego, CA",
-    role: "Product Manager",
-    photo:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=88",
-    bio: "Curious, kind, and family-oriented. I love good food, long conversations, travel, and building a life with someone who values both roots and adventure.",
-    interests: ["Travel", "Coffee", "Hiking", "Family", "Music"],
-    match: 94,
-  },
-  {
-    id: "michael",
-    name: "Michael",
-    age: 34,
-    city: "New York, NY",
-    role: "Architect",
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=88",
-    bio: "Architect, amateur cook, and chronic weekend traveler. I appreciate close families, old cities, and people who can laugh at themselves.",
-    interests: ["Design", "Cooking", "Travel", "Museums"],
-    match: 90,
-  },
-  {
-    id: "alex",
-    name: "Alex",
-    age: 31,
-    city: "Los Angeles, CA",
-    role: "Creative Director",
-    photo:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=88",
-    bio: "Creative by day, outdoors whenever possible. Looking for something warm, grounded, and serious enough to grow into a real partnership.",
-    interests: ["Art", "Fitness", "Beach", "Food"],
-    match: 88,
-  },
-  {
-    id: "ryan",
-    name: "Ryan",
-    age: 35,
-    city: "Seattle, WA",
-    role: "Engineer",
-    photo:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=88",
-    bio: "Engineer who likes spontaneous road trips, quiet coffee shops, and learning how other families and cultures celebrate life.",
-    interests: ["Road trips", "Coffee", "Tech", "Family"],
-    match: 85,
-  },
+  { id:"daniel", name:"Daniel", age:32, city:"San Diego, CA", role:"Product Manager", photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=88", bio:"Curious, kind, and family-oriented. I love good food, long conversations, travel, and building a life with someone who values both roots and adventure.", interests:["Travel","Coffee","Hiking","Family","Music"], match:94 },
+  { id:"michael", name:"Michael", age:34, city:"New York, NY", role:"Architect", photo:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=88", bio:"Architect, amateur cook, and chronic weekend traveler. I appreciate close families, old cities, and people who can laugh at themselves.", interests:["Design","Cooking","Travel","Museums"], match:90 },
+  { id:"alex", name:"Alex", age:31, city:"Los Angeles, CA", role:"Creative Director", photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=88", bio:"Creative by day, outdoors whenever possible. Looking for something warm, grounded, and serious enough to grow into a real partnership.", interests:["Art","Fitness","Beach","Food"], match:88 },
+  { id:"ryan", name:"Ryan", age:35, city:"Seattle, WA", role:"Engineer", photo:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=88", bio:"Engineer who likes spontaneous road trips, quiet coffee shops, and learning how other families and cultures celebrate life.", interests:["Road trips","Coffee","Tech","Family"], match:85 },
+  { id:"james", name:"James", age:33, city:"Newport Beach, CA", role:"Physical Therapist", photo:"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=88", bio:"Easygoing, active, and close with my family. I am happiest near the ocean, cooking for friends, or planning the next weekend away.", interests:["Beach","Cooking","Fitness","Family"], match:87 },
+  { id:"ethan", name:"Ethan", age:36, city:"Austin, TX", role:"Founder", photo:"https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=88", bio:"Optimistic builder with a soft spot for live music, big family dinners, and people who are proud of where they come from.", interests:["Music","Food","Travel","Startups"], match:84 },
+  { id:"noah", name:"Noah", age:30, city:"Santa Monica, CA", role:"Film Editor", photo:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=900&q=88", bio:"Film editor, dog person, and dedicated sunset walker. Looking for chemistry, kindness, and a relationship that feels playful and grounded.", interests:["Film","Dogs","Beach","Photography"], match:82 },
+  { id:"luke", name:"Luke", age:37, city:"Denver, CO", role:"Civil Engineer", photo:"https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=88", bio:"Calm, curious, and outdoorsy. I like mountains, good coffee, family traditions, and learning the story behind the food on the table.", interests:["Hiking","Coffee","Travel","Family"], match:80 },
 ];
 
-const atiPhoto =
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=88";
+const demoWomanPhoto =
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=88";
 
 const initialMessages = [
-  { from: "him", text: "Hi Ati! I loved your profile — you seem warm, thoughtful, and really close to your family." },
+  { from: "him", text: "Hi! I loved your profile — you seem warm, thoughtful, and really close to your family." },
   { from: "me", text: "Thank you! 😊 I liked yours too. You seem genuinely curious about different cultures." },
   { from: "him", text: "Very much. Also important question: coffee or Persian tea?" },
   { from: "me", text: "Both. Coffee first, Persian tea when the conversation gets serious. ☕️❤️" },
@@ -157,7 +117,7 @@ function Welcome({ onStart }: { onStart: () => void }) {
 
       <div className="hero-pair">
         <div className="portrait portrait-left">
-          <Image src={atiPhoto} alt="Demo profile portrait" fill sizes="220px" priority />
+          <Image src={demoWomanPhoto} alt="Demo profile portrait" fill sizes="220px" priority />
         </div>
         <div className="portrait portrait-right">
           <Image src={profiles[0].photo} alt="Demo match portrait" fill sizes="220px" priority />
@@ -204,11 +164,11 @@ function Onboarding({ onDone }: { onDone: () => void }) {
 
       <div className="profile-setup">
         <div className="avatar">
-          <Image src={atiPhoto} alt="Ati demo avatar" fill sizes="96px" />
+          <Image src={demoWomanPhoto} alt="Smiling demo profile avatar" fill sizes="96px" />
         </div>
         <div>
           <label>First name</label>
-          <input defaultValue="Ati" aria-label="First name" />
+          <input defaultValue="" placeholder="First name" aria-label="First name" />
         </div>
       </div>
 
@@ -253,23 +213,59 @@ function ChoiceGroup({
 
 function Discover({
   profile,
+  position,
+  total,
   onPass,
   onOpen,
   onLike,
 }: {
   profile: Profile;
+  position: number;
+  total: number;
   onPass: () => void;
   onOpen: () => void;
   onLike: () => void;
 }) {
+  const [dragStart, setDragStart] = useState<number | null>(null);
+  const [dragX, setDragX] = useState(0);
+  const strength = Math.min(Math.abs(dragX) / 120, 1);
+  const rotation = dragX / 22;
+
+  function finishSwipe(event: React.PointerEvent<HTMLElement>) {
+    if (dragStart === null) return;
+    const delta = event.clientX - dragStart;
+    setDragStart(null);
+    setDragX(0);
+    if (delta > 90) onLike();
+    else if (delta < -90) onPass();
+  }
+
   return (
     <div className="content discover">
       <Brand compact />
       <div className="filter-row">
         <button>📍 SoCal</button><button>Men</button><button>☷ Filters</button>
       </div>
+      <div className="deck-meta"><span>{position} of {total}</span><span>Swipe to browse</span></div>
 
-      <article className="swipe-card">
+      <article
+        className={"swipe-card" + (dragStart !== null ? " dragging" : "")}
+        style={{ transform: `translateX(${dragX}px) rotate(${rotation}deg)` }}
+        onPointerDown={(event) => {
+          event.currentTarget.setPointerCapture(event.pointerId);
+          setDragStart(event.clientX);
+        }}
+        onPointerMove={(event) => {
+          if (dragStart !== null) setDragX(event.clientX - dragStart);
+        }}
+        onPointerUp={finishSwipe}
+        onPointerCancel={() => {
+          setDragStart(null);
+          setDragX(0);
+        }}
+      >
+        <div className="swipe-stamp pass-stamp" style={{ opacity: dragX < 0 ? strength : 0 }}>PASS</div>
+        <div className="swipe-stamp like-stamp" style={{ opacity: dragX > 0 ? strength : 0 }}>LIKE</div>
         <button className="photo-button" onClick={onOpen} aria-label={"Open " + profile.name + "'s profile"}>
           <Image src={profile.photo} alt={profile.name} fill sizes="390px" priority />
           <div className="photo-shade" />
@@ -280,12 +276,9 @@ function Discover({
             <p>▣ {profile.role}</p>
           </div>
         </button>
-
         <div className="card-copy">
           <p>{profile.bio}</p>
-          <div className="chips compact-chips">
-            {profile.interests.slice(0, 4).map((item) => <span className="chip" key={item}>{item}</span>)}
-          </div>
+          <div className="chips compact-chips">{profile.interests.slice(0, 4).map((item) => <span className="chip" key={item}>{item}</span>)}</div>
           <button className="text-link" onClick={onOpen}>View full profile →</button>
         </div>
       </article>
@@ -295,6 +288,7 @@ function Discover({
         <button className="like" onClick={onLike} aria-label="Like">♥</button>
         <button className="message" onClick={onOpen} aria-label="View profile">✦</button>
       </div>
+      <p className="swipe-tip">← pass · drag the card · like →</p>
     </div>
   );
 }
@@ -354,9 +348,9 @@ function MatchMoment({
       <Brand compact />
       <p className="eyebrow">A NEW CONNECTION</p>
       <h1>It’s a Match!</h1>
-      <p>Ati & Daniel liked each other.</p>
+      <p>You & Daniel liked each other.</p>
       <div className="match-faces">
-        <div className="match-face"><Image src={atiPhoto} alt="Ati" fill sizes="140px" /></div>
+        <div className="match-face"><Image src={demoWomanPhoto} alt="Your demo profile" fill sizes="140px" /></div>
         <div className="match-heart">♥</div>
         <div className="match-face"><Image src={profiles[0].photo} alt="Daniel" fill sizes="140px" /></div>
       </div>
@@ -516,8 +510,8 @@ function Settings({ onSafety, onGold }: { onSafety: () => void; onGold: () => vo
     <div className="content settings">
       <Brand compact />
       <div className="settings-profile">
-        <div className="avatar"><Image src={atiPhoto} alt="Ati" fill sizes="96px" /></div>
-        <div><h2>Ati</h2><p>Orange County, CA</p><button>Edit profile</button></div>
+        <div className="avatar"><Image src={demoWomanPhoto} alt="Your demo profile" fill sizes="96px" /></div>
+        <div><h2 className="blank-name">&nbsp;</h2><p>Orange County, CA</p><button>Edit profile</button></div>
       </div>
       {[
         ["♡", "My Preferences", "Dating goals, lifestyle, culture"],
@@ -570,7 +564,7 @@ export default function Home() {
     <PhoneShell nav={nav} onNavigate={setScreen}>
       {screen === "welcome" && <Welcome onStart={() => setScreen("onboarding")} />}
       {screen === "onboarding" && <Onboarding onDone={() => setScreen("discover")} />}
-      {screen === "discover" && <Discover profile={profile} onPass={() => setIndex((current) => current + 1)} onOpen={() => setScreen("detail")} onLike={() => like(profile.id)} />}
+      {screen === "discover" && <Discover profile={profile} position={(index % profiles.length) + 1} total={profiles.length} onPass={() => setIndex((current) => current + 1)} onOpen={() => setScreen("detail")} onLike={() => like(profile.id)} />}
       {screen === "detail" && <Detail profile={profile} onBack={() => setScreen("discover")} onLike={() => like(profile.id)} />}
       {screen === "matched" && <MatchMoment onMessage={() => setScreen("chat")} onBrowse={() => setScreen("discover")} />}
       {screen === "matches" && <Matches onChat={() => setScreen("chat")} />}
