@@ -531,21 +531,21 @@ function Detail({ profile, onBack, onLike, onSuperLike }: { profile: Profile; on
   );
 }
 
-function MatchMoment({ onMessage, onBrowse }: { onMessage: () => void; onBrowse: () => void }) {
+function MatchMoment({ profile, onMessage, onBrowse }: { profile: Profile; onMessage: () => void; onBrowse: () => void }) {
   return (
     <div className="match-moment">
       <div className="confetti c1">✦</div><div className="confetti c2">✧</div><div className="confetti c3">✦</div>
       <Brand compact />
       <p className="eyebrow">A NEW CONNECTION</p>
       <h1>It’s a Match!</h1>
-      <p>You & Daniel liked each other.</p>
+      <p>You & {profile.name} liked each other.</p>
       <div className="match-faces">
         <div className="match-face"><Image src={demoWomanPhoto} alt="Your demo profile" fill sizes="140px" /></div>
         <div className="match-heart">♥</div>
-        <div className="match-face"><Image src={profiles[0].photo} alt="Daniel" fill sizes="140px" /></div>
+        <div className="match-face"><Image src={profile.photo} alt={profile.name} fill sizes="140px" /></div>
       </div>
       <blockquote>“Good conversations can start across any distance.”</blockquote>
-      <button className="primary" onClick={onMessage}>Send Daniel a Message <span>→</span></button>
+      <button className="primary" onClick={onMessage}>Send {profile.name} a Message <span>→</span></button>
       <button className="secondary" onClick={onBrowse}>Keep Browsing</button>
     </div>
   );
@@ -571,7 +571,7 @@ function Matches({ matchedIds, onChat }: { matchedIds: string[]; onChat: (id: st
           </button>
         ))}
       </div>
-      <div className="soft-card"><span>✦</span><div><b>Every match opens a real demo chat.</b><p>Tap Michael, Alex, or Daniel and the conversation changes.</p></div></div>
+      <div className="soft-card"><span>✦</span><div><b>Every match opens a real demo chat.</b><p>Like anyone in Discover, then tap his match here to continue the conversation.</p></div></div>
     </div>
   );
 }
@@ -751,6 +751,7 @@ export default function Home() {
   const [swipeHistory, setSwipeHistory] = useState<number[]>([]);
   const [matchedIds, setMatchedIds] = useState<string[]>(["michael", "alex"]);
   const [activeChatId, setActiveChatId] = useState("michael");
+  const [lastMatchedId, setLastMatchedId] = useState("michael");
   const [inviteSentTo, setInviteSentTo] = useState<string | null>(null);
   const [likesSent, setLikesSent] = useState(0);
   const [superLikesSent, setSuperLikesSent] = useState(0);
@@ -762,9 +763,22 @@ export default function Home() {
   const [profileBio, setProfileBio] = useState("Family-minded, curious, and looking for a meaningful cross-cultural connection.");
 
   useEffect(() => {
-    const likedDaniel = window.localStorage.getItem("saffron-liked-daniel") === "true";
-    if (likedDaniel) setMatchedIds((current) => current.includes("daniel") ? current : ["daniel", ...current]);
+    try {
+      const saved = JSON.parse(window.localStorage.getItem("saffron-matched-ids") || "[]") as string[];
+      const legacyDaniel = window.localStorage.getItem("saffron-liked-daniel") === "true";
+      const restored = [...new Set([...(legacyDaniel ? ["daniel"] : []), ...saved])].filter((id) => profiles.some((p) => p.id === id));
+      if (restored.length) {
+        setMatchedIds((current) => [...new Set([...restored, ...current])]);
+        setLastMatchedId(restored[0]);
+      }
+    } catch {
+      // Keep the seeded demo matches if local storage is unavailable or malformed.
+    }
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("saffron-matched-ids", JSON.stringify(matchedIds));
+  }, [matchedIds]);
 
   useEffect(() => {
     setIndex(0);
@@ -794,6 +808,7 @@ export default function Home() {
 
   const profile = filteredProfiles.length ? filteredProfiles[index % filteredProfiles.length] : undefined;
   const activeChatProfile = profiles.find((p) => p.id === activeChatId) || profiles[0];
+  const lastMatchedProfile = profiles.find((p) => p.id === lastMatchedId) || profiles[0];
 
   const nav = useMemo<Screen | undefined>(() => {
     if (["discover", "matches", "chat", "settings"].includes(screen)) return screen;
@@ -818,30 +833,34 @@ export default function Home() {
     });
   }
 
+  function matchCurrent(kind: "like" | "super") {
+    if (!profile) return;
+    const matched = profile;
+    setMatchedIds((current) => current.includes(matched.id) ? current : [matched.id, ...current]);
+    setLastMatchedId(matched.id);
+    setActiveChatId(matched.id);
+    setChatMessages((current) => current[matched.id] ? current : {
+      ...current,
+      [matched.id]: [{
+        from: "him",
+        text: kind === "super"
+          ? "Hey! I saw your Super Like — that definitely got my attention. Nice to meet you 😊"
+          : "Hey! Looks like we matched. I’m glad we found each other here 😊",
+      }],
+    });
+    setScreen("matched");
+  }
+
   function likeCurrent() {
     if (!profile) return;
     setLikesSent((current) => current + 1);
-    if (profile.id === "daniel") {
-      setMatchedIds((current) => current.includes("daniel") ? current : ["daniel", ...current]);
-      window.localStorage.setItem("saffron-liked-daniel", "true");
-      setScreen("matched");
-      return;
-    }
-    setToast("♥ Like sent to " + profile.name);
-    advance();
+    matchCurrent("like");
   }
 
   function superLikeCurrent() {
     if (!profile) return;
     setSuperLikesSent((current) => current + 1);
-    if (profile.id === "daniel") {
-      setMatchedIds((current) => current.includes("daniel") ? current : ["daniel", ...current]);
-      window.localStorage.setItem("saffron-liked-daniel", "true");
-      setScreen("matched");
-      return;
-    }
-    setToast("★ Super Like sent to " + profile.name);
-    advance();
+    matchCurrent("super");
   }
 
   function openChat(id: string) {
@@ -885,7 +904,7 @@ export default function Home() {
         />
       )}
       {screen === "detail" && profile && <Detail profile={profile} onBack={() => setScreen("discover")} onLike={likeCurrent} onSuperLike={superLikeCurrent} />}
-      {screen === "matched" && <MatchMoment onMessage={() => openChat("daniel")} onBrowse={() => setScreen("discover")} />}
+      {screen === "matched" && <MatchMoment profile={lastMatchedProfile} onMessage={() => openChat(lastMatchedId)} onBrowse={() => { advance(); setScreen("discover"); }} />}
       {screen === "matches" && <Matches matchedIds={matchedIds} onChat={openChat} />}
       {screen === "chat" && (
         <>
@@ -898,7 +917,7 @@ export default function Home() {
       {screen === "gold" && <Gold />}
       {screen === "settings" && <Settings onSafety={() => setScreen("safety")} onGold={() => setScreen("gold")} onEdit={() => setScreen("edit")} name={profileName} location={profileLocation} />}
       {screen === "edit" && <EditProfile name={profileName} setName={setProfileName} location={profileLocation} setLocation={setProfileLocation} bio={profileBio} setBio={setProfileBio} onSave={() => { setToast("✓ Profile saved"); setScreen("settings"); }} />}
-      {matchedIds.includes("daniel") && screen === "discover" && <button className="floating-match" onClick={() => setScreen("matches")}>♥ Daniel matched</button>}
+      {matchedIds.length > 0 && screen === "discover" && <button className="floating-match" onClick={() => setScreen("matches")}>♥ {lastMatchedProfile.name} matched</button>}
     </PhoneShell>
   );
 }
