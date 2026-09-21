@@ -440,7 +440,7 @@ function Discover({
   const [dragStart, setDragStart] = useState<number | null>(null);
   const [dragX, setDragX] = useState(0);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const strength = Math.min(Math.abs(dragX) / 120, 1);
+  const intentStrength = Math.min(Math.max((Math.abs(dragX) - 5) / 45, 0), 1);
   const rotation = dragX / 22;
 
   function finishSwipe(event: React.PointerEvent<HTMLElement>) {
@@ -489,8 +489,32 @@ function Discover({
         onPointerUp={finishSwipe}
         onPointerCancel={() => { setDragStart(null); setDragX(0); }}
       >
-        <div className="swipe-stamp pass-stamp" style={{ opacity: dragX < 0 ? strength : 0 }}>PASS</div>
-        <div className="swipe-stamp like-stamp" style={{ opacity: dragX > 0 ? strength : 0 }}>LIKE</div>
+        <div
+          className="swipe-intent-glow pass-glow"
+          style={{ opacity: dragX < 0 ? intentStrength * 0.22 : 0 }}
+        />
+        <div
+          className="swipe-intent-glow like-glow"
+          style={{ opacity: dragX > 0 ? intentStrength * 0.22 : 0 }}
+        />
+        <div
+          className="swipe-stamp pass-stamp"
+          style={{
+            opacity: dragX < 0 ? intentStrength : 0,
+            transform: `rotate(-12deg) scale(${0.92 + intentStrength * 0.08})`,
+          }}
+        >
+          PASS
+        </div>
+        <div
+          className="swipe-stamp like-stamp"
+          style={{
+            opacity: dragX > 0 ? intentStrength : 0,
+            transform: `rotate(12deg) scale(${0.92 + intentStrength * 0.08})`,
+          }}
+        >
+          LIKE
+        </div>
         <button className="photo-button" onClick={onOpen} aria-label={"Open " + profile.name + "'s profile"}>
           <Image src={profile.photo} alt={profile.name} fill sizes="390px" priority />
           <div className="photo-shade" />
