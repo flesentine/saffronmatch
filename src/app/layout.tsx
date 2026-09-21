@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Saffron Match Demo",
   description: "A clickable cross-cultural dating app concept.",
+  icons: {
+    icon: "/saffronmatch/favicon.svg",
+  },
 };
 
 export default function RootLayout({

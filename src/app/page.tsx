@@ -251,31 +251,53 @@ function PhoneShell({
 
 function Welcome({ onStart }: { onStart: () => void }) {
   return (
-    <div className="welcome">
+    <div className="welcome welcome-gen">
+      <div className="welcome-corner-flower" aria-hidden="true"><i /><i /><i /><b /></div>
       <div className="ornament ornament-a" />
       <div className="ornament ornament-b" />
       <Brand />
       <p className="eyebrow">PEOPLE · CULTURE · A BRIGHTER US</p>
-      <div className="welcome-hero-art">
+
+      <div className="welcome-hero-art welcome-hero-gen">
         <img
           src={process.env.NODE_ENV === "production" ? "/saffronmatch/welcome-generated.webp" : "/welcome-generated.webp"}
           alt="Smiling Persian woman and promotional match in a golden Persian cityscape"
         />
-        <div className="welcome-hero-badge"><span>♥</span><b>Across cultures</b><small lang="fa" dir="rtl">میان فرهنگ‌ها</small></div>
+        <span className="hero-script">Love goes further<br />together ♡</span>
+        <div className="welcome-hero-badge">
+          <span>♥</span>
+          <div><b>Across cultures</b><small lang="fa" dir="rtl">میان فرهنگ‌ها</small></div>
+        </div>
       </div>
+
+      <div className="welcome-script-block">
+        <span className="script-note">Different cultures. Brighter stories.</span>
+        <span className="script-note-fa" lang="fa" dir="rtl">فرهنگ‌های متفاوت، داستان‌های روشن‌تر</span>
+      </div>
+
       <div className="welcome-copy">
-        <span className="script-note">Different cultures.<br />Brighter stories.</span><span className="script-note-fa" lang="fa" dir="rtl">فرهنگ‌های متفاوت، داستان‌های روشن‌تر</span>
-        <h1>Meet someone who gets <em>both</em> sides of your story.</h1>
-        <button className="primary welcome-primary" onClick={onStart}>Get Started <small lang="fa" dir="rtl">شروع کن</small><span>→</span></button>
-        <p>A dating experience designed around meaningful cross-cultural connection.</p><p className="welcome-fa" lang="fa" dir="rtl">برای آشنایی‌های واقعی، محترمانه و معنادار میان فرهنگ‌ها</p>
+        <h1>Meet someone who gets <em>both</em><br />sides of your story.</h1>
+        <button className="primary welcome-primary" onClick={onStart}>
+          <span>Get Started</span><i className="cta-divider" aria-hidden="true" /><small lang="fa" dir="rtl">شروع کن</small><b>→</b>
+        </button>
+        <p>A dating experience designed around meaningful cross-cultural connection.</p>
+        <p className="welcome-fa" lang="fa" dir="rtl">برای آشنایی‌های واقعی، محترمانه و معنادار میان فرهنگ‌ها</p>
       </div>
-      <div className="feature-row">
-        <div><b>♡</b><span>Real people</span><small lang="fa" dir="rtl">آدم‌های واقعی</small></div>
-        <div><b>◎</b><span>Shared values</span><small lang="fa" dir="rtl">ارزش‌های مشترک</small></div>
-        <div><b>✦</b><span>Safer dating</span><small lang="fa" dir="rtl">فضایی امن‌تر</small></div>
+
+      <div className="feature-row welcome-feature-row">
+        <div><b>♙</b><span>Real people</span><small lang="fa" dir="rtl">آدم‌های واقعی</small></div>
+        <div><b>♧</b><span>Shared values</span><small lang="fa" dir="rtl">ارزش‌های مشترک</small></div>
+        <div><b>♢</b><span>Safer dating</span><small lang="fa" dir="rtl">فضایی امن‌تر</small></div>
       </div>
-      <button className="secondary" onClick={onStart}>Preview the demo <small lang="fa" dir="rtl">دیدن نسخه نمایشی</small></button>
-      <div className="motto">LOVE HAS A WIDER HORIZON<div lang="fa" dir="rtl">عشق افق گسترده‌تری دارد</div></div>
+
+      <button className="secondary welcome-secondary" onClick={onStart}>
+        <span>Preview the demo</span><b>▷</b><i className="cta-divider" aria-hidden="true" /><small lang="fa" dir="rtl">دیدن نسخه نمایشی</small>
+      </button>
+
+      <div className="motto welcome-motto">
+        <span>LOVE HAS A WIDER HORIZON</span>
+        <div lang="fa" dir="rtl">عشق افق گسترده‌تری دارد</div>
+      </div>
     </div>
   );
 }
